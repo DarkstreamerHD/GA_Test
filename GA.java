@@ -1,6 +1,8 @@
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by niklas on 1/21/16.
@@ -9,40 +11,35 @@ import javax.script.ScriptException;
 public class GA {
 
     public static void main(String[] args) throws ScriptException {
-
-        String rdm = Random.generateRandomMathString(6);
-        System.out.println("[Information] The random chain is " + rdm);
-
-        solveStuff(rdm);
-        String dna = Vars.convertToBitChain(rdm);
-        System.out.println(dna);
-        String newDna = Copy.copyAndMutate(dna);
-        System.out.println(newDna);
-        String newMathChain = Vars.bitChainToMathChain(newDna);
-        System.out.println(newMathChain);
-        solveStuff(newMathChain);
-
+        List<Genome> ParentalGeneration = createParentalGeneration();
+        System.out.print("");
 
     }
 
-
-    public static void solveStuff(String equation)
+    public static List<Genome> createParentalGeneration()
     {
+        List<Genome> genomeList = new ArrayList();
 
-        if (equation != "") {
-            try {
-                ScriptEngineManager mgr = new ScriptEngineManager();
-                ScriptEngine engine = mgr.getEngineByName("JavaScript");
+        for (int i = References.generationSize;i != 0; i--) {
+            String rdm = Random.generateRandomMathString(6);
 
-                System.out.println(engine.eval(equation));
-            } catch (Exception e) {
-                System.out.println("[Error] This equation has too bad DNA to live!");
-            }
+            String dna = Vars.convertToBitChain(rdm);
+
+            Genome newGenome = new Genome();
+            newGenome.DNA = dna;
+            newGenome.calculateFitness();
+
+            genomeList.add(newGenome);
         }
-        else {
-            System.out.println("[Error] No Equation!");
-        }
+
+
+        return genomeList;
+
+
+
     }
+
+
 
 
 

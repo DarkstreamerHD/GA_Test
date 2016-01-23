@@ -1,7 +1,10 @@
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
 /**
  * Created by niklas on 1/21/16.
  */
-public class Vars {
+public class  Vars {
 
 
     public Vars()
@@ -178,5 +181,25 @@ public class Vars {
 
         return mathChain;
     }
+
+
+    public static double solveStuff(String equation)
+    {
+        double result;
+
+
+        try {
+            ScriptEngineManager mgr = new ScriptEngineManager();
+            ScriptEngine engine = mgr.getEngineByName("JavaScript");
+
+            result = (double) engine.eval(equation);
+        } catch (Exception e) {
+            System.out.println("[Error] Invalid Equation!");
+            result = Double.NEGATIVE_INFINITY;
+        }
+
+        return  result;
+    }
+
 
 }
