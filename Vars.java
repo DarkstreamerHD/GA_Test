@@ -89,6 +89,24 @@ public class Vars {
 
     }
 
+    public static boolean isNumber(String bits){
+        String mathToReturn = "";
+        int foo;
+        foo = Integer.parseInt(bits,2);
+
+
+        if (foo<10) {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+
+
+    }
+
     public static String bitsToMath(String bits)
     {
         String mathToReturn = "";
@@ -113,6 +131,11 @@ public class Vars {
                 mathToReturn = "*";
                 break;
         }
+        if (foo >13)
+        {
+            //makes the final equation invalid if a mutation decides so!
+            mathToReturn = "x";
+        }
 
         return mathToReturn;
 
@@ -128,8 +151,29 @@ public class Vars {
         for (int i = bitChainLength/4; i != 0; i--)
         {
             currentBits= String.valueOf(bitChain.substring(bitChainLength - (i*4), bitChainLength - (i*4) + 4));
-            charToAdd = bitsToMath(currentBits);
-            mathChain = mathChain + charToAdd;
+           if (i%2 == 0 & !isNumber(currentBits))
+           {
+               charToAdd = bitsToMath(currentBits);
+               mathChain = mathChain + charToAdd;
+           }
+
+            if (i%2 != 0 & isNumber(currentBits))
+            {
+                charToAdd = bitsToMath(currentBits);
+                mathChain = mathChain + charToAdd;
+            }
+
+            if (i%2 == 0 & isNumber(currentBits))
+            {
+                charToAdd = "z";
+                mathChain = mathChain + charToAdd;
+            }
+            if (i%2 != 0 & !isNumber(currentBits))
+            {
+                charToAdd = "z";
+                mathChain = mathChain + charToAdd;
+            }
+
         }
 
         return mathChain;

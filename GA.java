@@ -36,7 +36,7 @@ public class GA {
 
                 System.out.println(engine.eval(equation));
             } catch (Exception e) {
-                System.out.println("[Error] Invalid Equation");
+                System.out.println("[Error] This equation has too bad DNA to live!");
             }
         }
         else {
