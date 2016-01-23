@@ -4,6 +4,7 @@ import javax.script.ScriptException;
 
 /**
  * Created by niklas on 1/21/16.
+ * its cool
  */
 public class GA {
 
