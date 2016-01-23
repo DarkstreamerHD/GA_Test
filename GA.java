@@ -18,6 +18,9 @@ public class GA {
         System.out.println(dna);
         String newDna = Copy.copyAndMutate(dna);
         System.out.println(newDna);
+        String newMathChain = Vars.bitChainToMathChain(newDna);
+        System.out.println(newMathChain);
+        solveStuff(newMathChain);
 
 
     }

@@ -88,4 +88,51 @@ public class Vars {
         return bitChain;
 
     }
+
+    public static String bitsToMath(String bits)
+    {
+        String mathToReturn = "";
+        int foo;
+        foo = Integer.parseInt(bits,2);
+
+        if (foo<10) {
+            mathToReturn = String.valueOf(foo);
+        }
+
+        switch (foo) {
+            case 10:
+                mathToReturn = "+";
+                break;
+            case 11:
+                mathToReturn = "-";
+                break;
+            case 12:
+                mathToReturn = "/";
+                break;
+            case 13:
+                mathToReturn = "*";
+                break;
+        }
+
+        return mathToReturn;
+
+    }
+
+    public static String bitChainToMathChain(String bitChain)
+    {
+        String mathChain = "";
+        String charToAdd = "";
+        String currentBits;
+        int bitChainLength = bitChain.length();
+
+        for (int i = bitChainLength/4; i != 0; i--)
+        {
+            currentBits= String.valueOf(bitChain.substring(bitChainLength - (i*4), bitChainLength - (i*4) + 4));
+            charToAdd = bitsToMath(currentBits);
+            mathChain = mathChain + charToAdd;
+        }
+
+        return mathChain;
+    }
+
 }
