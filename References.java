@@ -6,4 +6,5 @@ public class References {
     public static double    lengthMutationChance = 0.1;
     public static int       generationSize = 1000;
     public static int       aim = 1000;
+    public static int       maxAmountOfGenerations = 100;
 }

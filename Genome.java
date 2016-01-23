@@ -10,7 +10,7 @@ public class Genome {
     public void calculateFitness()
     {
         double result = Vars.solveStuff(Vars.bitChainToMathChain(DNA));
-        fitness = Math.abs(result - References.aim);
+        fitness = (Math.abs(result - References.aim));
         if (Double.isInfinite(fitness) | Double.isNaN(fitness))
         {
             valid = false;
