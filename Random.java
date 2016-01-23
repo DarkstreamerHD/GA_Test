@@ -140,4 +140,25 @@ public class Random {
         }
         return chain;
     }
+
+    public static String generateRandomMathOperator()
+    {
+        int rdm = (int) Math.round(Math.random()*4 +1);
+        String mathOPtoReturn = "";
+        switch (rdm) {
+            case 1:
+                mathOPtoReturn = "+";
+                break;
+            case 2:
+                mathOPtoReturn = "-";
+                break;
+            case 3:
+                mathOPtoReturn = "/";
+                break;
+            case 4:
+                mathOPtoReturn = "*";
+                break;
+        }
+        return mathOPtoReturn;
+    }
 }

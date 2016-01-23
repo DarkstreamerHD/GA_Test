@@ -165,12 +165,12 @@ public class Vars {
 
             if (i%2 == 0 & isNumber(currentBits))
             {
-                charToAdd = "z";
+                charToAdd = Random.generateRandomMathOperator();
                 mathChain = mathChain + charToAdd;
             }
             if (i%2 != 0 & !isNumber(currentBits))
             {
-                charToAdd = "z";
+                charToAdd = String.valueOf(Math.round(Math.random()*9));
                 mathChain = mathChain + charToAdd;
             }
 
